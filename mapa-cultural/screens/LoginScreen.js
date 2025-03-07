@@ -6,11 +6,13 @@ const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = () => {
-    if (email && password) {
-      navigation.navigate("EventForm");
+  // No LoginScreen.js
+const handleLogin = async () => {
+    const response = await mockLogin(email, password);
+    if (response.success) {
+      navigation.navigate("Explorar");
     } else {
-      alert("Por favor, preencha todos os campos.");
+      alert(response.message);
     }
   };
 
